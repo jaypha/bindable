@@ -1,5 +1,5 @@
 {
-  "name": "bindable",
+  "name": "@jaypha/bindable",
   "version": "0.1.0",
   "description": "Bindable variables without the need for a framework",
   "main": "dist/bindable.cjs.js",
