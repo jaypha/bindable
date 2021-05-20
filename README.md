@@ -1,6 +1,6 @@
 # bindable
 
-A set of classes to enable simple binding of variables for thos who don't
+A set of classes to enable simple binding of variables for those who don't
 want to use a framework just to get bindings.
 
 It basically works by enabling the attachment of event listeners to a value.
@@ -32,5 +32,5 @@ bv.bindWidget(e);
 ## License
 
 Copyright (C) 2019 Jaypha.  
-Distributed under the [Boost Software License, Version 1.0](http://www.boost.org/LICENSE_1_0.txt).
+Distributed under the [Boost Software License, Version 1.0](https://www.boost.org/LICENSE_1_0.txt).
 

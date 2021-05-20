@@ -7,13 +7,13 @@ Object.defineProperty(exports, '__esModule', { value: true });
 // Binding without the bloat
 //----------------------------------------------------------------------------
 
-// Binding works by allowing event handler to be attached to the value in
+// Binding works by allowing event handlers to be attached to a value in
 // question. When the value changes, the event is fired.
 
 
 //----------------------------------------------------------------------------
 // BindableValue is an object encapsulating a single value. You need to use
-// get and set as simply sddigning will replace the object. Attach listeners
+// get and set as simply assigning will replace the object. Attach listeners
 // using addEventListener. Every time set is called, the event fires.
 
 class BindableValue
@@ -30,17 +30,21 @@ class BindableValue
     }
   }
 
+  // Each listener needs to accept a BindableValue as its first parameter.
   addEventListener(fn) {
     this._listeners.push(fn);
   }
 
+  dispatchEvent() { return this.trigger(); }
+
   trigger() {
     for (let i=0; i<this._listeners.length; ++i)
       (this._listeners[i])(this);
+    return true;
   }
 
   bindWidget(w) {
-    this.addEventListener(((o) => w.value=o.get()) );
+    this.addEventListener(((bindable) => w.value=bindable.get()) );
     w.addEventListener('change', (ev) => this.set(w.value));
   }
 
@@ -95,6 +99,7 @@ class BindableObject
 
   keys() { return Object.keys(this._props); }
 
+  // Each listener needs to accept a BindableObject as its first parameter.
   addEventListener(type, fn)
   {
     this._listeners[type].push(fn);
@@ -115,6 +120,7 @@ class BindableArray extends Array
     this._listeners = { add:[], remove:[], rearrange: [], change: [] };
   }
 
+  // Each listener needs to accept a BindableArray as its first parameter.
   addEventListener(type, fn) { this._listeners[type].push(fn); }
   fill() {
     let result = super.fill(...arguments);
@@ -210,6 +216,7 @@ class BindableAssoc
   keys() { return Object.keys(this._props); }
   removeItem(p) { delete target._props[p]; }
 
+  // Each listener needs to accept a BindableValue as its first parameter.
   addEventListener(p, fn)
   {
     if (typeof(this._props[p]) == "undefined")
