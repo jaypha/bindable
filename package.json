@@ -1,6 +1,6 @@
 {
   "name": "@jaypha/bindable",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Bindable variables without the need for a framework",
   "main": "dist/bindable.cjs.js",
   "module": "dist/bindable.esm.js",
