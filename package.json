@@ -19,7 +19,7 @@
     "bindings"
   ],
   "devDependencies": {
-    "rollup": "^1.7.3"
+    "rollup": "^2.79.2"
   },
   "author": "Jason den Dulk",
   "license": "BSL-1.0"
